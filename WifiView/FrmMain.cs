@@ -15,7 +15,7 @@ namespace WifiView
         public FrmMain()
         {
             this.wClient = wClient = new WlanClient();
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -28,10 +28,9 @@ namespace WifiView
             foreach (WlanClient.WlanInterface wlanIface in this.wClient.Interfaces)
             {
                 ListViewItem item = new ListViewItem();
-                item.Text = wlanIface.InterfaceName;
+                item.Text = wlanIface.InterfaceDescription;
                 item.Tag = wlanIface;
                 lstInterfaces.Items.Add(item);
-
             }
         }
 
@@ -54,6 +53,7 @@ namespace WifiView
                 if (item.Tag != null && item.Tag.GetType() == typeof(WlanClient.WlanInterface))
                 {
                     AddDeviceInformation(item.Tag as WlanClient.WlanInterface);
+
                 }
             }
         }
@@ -69,7 +69,7 @@ namespace WifiView
 
         private void AddDeviceInterfaceInformation(WlanClient.WlanInterface wlanIface)
         {
-            ListViewGroup groupIface = new ListViewGroup("Interface");
+            ListViewGroup groupIface = new ListViewGroup("Interface");            
             lstInterfaceInformation.Groups.Add(groupIface);
 
             ListViewItem[] ifaceItems =
@@ -116,6 +116,10 @@ namespace WifiView
 
             AddDeviceNetworkInformation(wlanIface);
             AddDeviceInterfaceInformation(wlanIface);
+
+#if !DEBUG
+            lstInterfaceInformation.SetGroupState(ListViewGroupCollapse.ListViewGroupState.Collapsible);
+#endif
         }
 
         private void LstInterfaceInformation_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)

@@ -1,4 +1,6 @@
-﻿namespace WifiView
+﻿using ListViewGroupCollapse;
+
+namespace WifiView
 {
     partial class FrmMain
     {
@@ -40,13 +42,15 @@
             this.grpInterfaces = new System.Windows.Forms.GroupBox();
             this.colInterfacesName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lstInterfaces = new System.Windows.Forms.ListView();
-            this.lstInterfaceInformation = new System.Windows.Forms.ListView();
+            this.lstInterfaceInformation = new ListViewExtended();
             this.colInterfaceInformationKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colInterfaceInformationValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listView1 = new System.Windows.Forms.ListView();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabOptions.SuspendLayout();
+            this.tabProfiles.SuspendLayout();
             this.mnuInterfaces.SuspendLayout();
             this.tabInformation.SuspendLayout();
             this.grpInterfaces.SuspendLayout();
@@ -85,6 +89,7 @@
             // 
             // tabProfiles
             // 
+            this.tabProfiles.Controls.Add(this.listView1);
             this.tabProfiles.Location = new System.Drawing.Point(4, 22);
             this.tabProfiles.Name = "tabProfiles";
             this.tabProfiles.Padding = new System.Windows.Forms.Padding(3);
@@ -191,12 +196,24 @@
             // colInterfaceInformationKey
             // 
             this.colInterfaceInformationKey.Text = "Key";
-            this.colInterfaceInformationKey.Width = 100;
+            this.colInterfaceInformationKey.Width = 120;
             // 
             // colInterfaceInformationValue
             // 
             this.colInterfaceInformationValue.Text = "Value";
-            this.colInterfaceInformationValue.Width = 156;
+            this.colInterfaceInformationValue.Width = 392;
+            // 
+            // listView1
+            // 
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
+            this.listView1.Location = new System.Drawing.Point(3, 3);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(516, 418);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // FrmMain
             // 
@@ -215,6 +232,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
             this.tabOptions.ResumeLayout(false);
+            this.tabProfiles.ResumeLayout(false);
             this.mnuInterfaces.ResumeLayout(false);
             this.tabInformation.ResumeLayout(false);
             this.grpInterfaces.ResumeLayout(false);
@@ -235,9 +253,10 @@
         private System.Windows.Forms.GroupBox grpInterfaces;
         private System.Windows.Forms.ListView lstInterfaces;
         private System.Windows.Forms.ColumnHeader colInterfacesName;
-        private System.Windows.Forms.ListView lstInterfaceInformation;
+        private ListViewExtended lstInterfaceInformation;
         private System.Windows.Forms.ColumnHeader colInterfaceInformationKey;
         private System.Windows.Forms.ColumnHeader colInterfaceInformationValue;
+        private System.Windows.Forms.ListView listView1;
     }
 }
 
