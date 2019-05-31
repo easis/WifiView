@@ -70,7 +70,7 @@ namespace WifiView
                 for (int i = 0; i < interfaceProperties.DhcpServerAddresses.Count; i++)
                 {
                     items.Add(
-                        Utils.MakeKeyValueItem($"DhcpServerAddress #{i}", $"{interfaceProperties.DhcpServerAddresses[i].Address.ToString()}", group)
+                        Utils.MakeKeyValueItem($"DhcpServerAddress #{i}", $"{interfaceProperties.DhcpServerAddresses[i].ToString()}", group)
                     );
                 }
             }
@@ -78,7 +78,7 @@ namespace WifiView
             for (int i = 0; i < interfaceProperties.DnsAddresses.Count; i++)
             {
                 items.Add(
-                    Utils.MakeKeyValueItem($"DnsAddress #{i}", $"{interfaceProperties.DnsAddresses[i].Address.ToString()}", group)
+                    Utils.MakeKeyValueItem($"DnsAddress #{i}", $"{interfaceProperties.DnsAddresses[i].ToString()}", group)
                 );
             }
 
