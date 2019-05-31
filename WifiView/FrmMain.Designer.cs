@@ -43,11 +43,16 @@ namespace WifiView
             this.tabStatistics = new System.Windows.Forms.TabPage();
             this.mnuInterfaces = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuInterfacesReload = new System.Windows.Forms.ToolStripMenuItem();
+            this.colInterfaceNetworkKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colInterfaceNetworkValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tblNetworks = new System.Windows.Forms.DataGridView();
             this.lstInterfaceInformation = new ListViewGroupCollapse.ListViewExtended();
             this.colInterfaceInformationKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colInterfaceInformationValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colInterfaceNetworkKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colInterfaceNetworkValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colNetworkName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNetworkAlgorithm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNetworkEncryption = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNetworkSignal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -55,7 +60,9 @@ namespace WifiView
             this.tabOptions.SuspendLayout();
             this.tabInformation.SuspendLayout();
             this.tabProfiles.SuspendLayout();
+            this.tabNetworks.SuspendLayout();
             this.mnuInterfaces.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tblNetworks)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -163,6 +170,7 @@ namespace WifiView
             // 
             // tabNetworks
             // 
+            this.tabNetworks.Controls.Add(this.tblNetworks);
             this.tabNetworks.Location = new System.Drawing.Point(4, 22);
             this.tabNetworks.Name = "tabNetworks";
             this.tabNetworks.Padding = new System.Windows.Forms.Padding(3);
@@ -195,6 +203,38 @@ namespace WifiView
             this.mnuInterfacesReload.Text = "Reload";
             this.mnuInterfacesReload.Click += new System.EventHandler(this.MnuInterfacesReload_Click);
             // 
+            // colInterfaceNetworkKey
+            // 
+            this.colInterfaceNetworkKey.Text = "Key";
+            this.colInterfaceNetworkKey.Width = 120;
+            // 
+            // colInterfaceNetworkValue
+            // 
+            this.colInterfaceNetworkValue.Text = "Value";
+            this.colInterfaceNetworkValue.Width = 392;
+            // 
+            // tblNetworks
+            // 
+            this.tblNetworks.AllowUserToAddRows = false;
+            this.tblNetworks.AllowUserToDeleteRows = false;
+            this.tblNetworks.AllowUserToResizeRows = false;
+            this.tblNetworks.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.tblNetworks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tblNetworks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colNetworkName,
+            this.colNetworkAlgorithm,
+            this.colNetworkEncryption,
+            this.colNetworkSignal});
+            this.tblNetworks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblNetworks.Location = new System.Drawing.Point(3, 3);
+            this.tblNetworks.MultiSelect = false;
+            this.tblNetworks.Name = "tblNetworks";
+            this.tblNetworks.ReadOnly = true;
+            this.tblNetworks.RowHeadersVisible = false;
+            this.tblNetworks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tblNetworks.Size = new System.Drawing.Size(516, 418);
+            this.tblNetworks.TabIndex = 0;
+            // 
             // lstInterfaceInformation
             // 
             this.lstInterfaceInformation.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -222,15 +262,33 @@ namespace WifiView
             this.colInterfaceInformationValue.Text = "Value";
             this.colInterfaceInformationValue.Width = 392;
             // 
-            // colInterfaceNetworkKey
+            // colNetworkName
             // 
-            this.colInterfaceNetworkKey.Text = "Key";
-            this.colInterfaceNetworkKey.Width = 120;
+            this.colNetworkName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNetworkName.HeaderText = "Name";
+            this.colNetworkName.Name = "colNetworkName";
+            this.colNetworkName.ReadOnly = true;
             // 
-            // colInterfaceNetworkValue
+            // colNetworkAlgorithm
             // 
-            this.colInterfaceNetworkValue.Text = "Value";
-            this.colInterfaceNetworkValue.Width = 392;
+            this.colNetworkAlgorithm.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNetworkAlgorithm.HeaderText = "Algorithm";
+            this.colNetworkAlgorithm.Name = "colNetworkAlgorithm";
+            this.colNetworkAlgorithm.ReadOnly = true;
+            // 
+            // colNetworkEncryption
+            // 
+            this.colNetworkEncryption.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNetworkEncryption.HeaderText = "Encryption";
+            this.colNetworkEncryption.Name = "colNetworkEncryption";
+            this.colNetworkEncryption.ReadOnly = true;
+            // 
+            // colNetworkSignal
+            // 
+            this.colNetworkSignal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNetworkSignal.HeaderText = "Signal";
+            this.colNetworkSignal.Name = "colNetworkSignal";
+            this.colNetworkSignal.ReadOnly = true;
             // 
             // FrmMain
             // 
@@ -252,7 +310,9 @@ namespace WifiView
             this.tabOptions.ResumeLayout(false);
             this.tabInformation.ResumeLayout(false);
             this.tabProfiles.ResumeLayout(false);
+            this.tabNetworks.ResumeLayout(false);
             this.mnuInterfaces.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tblNetworks)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -276,6 +336,11 @@ namespace WifiView
         private System.Windows.Forms.ListView lstProfiles;
         private System.Windows.Forms.ColumnHeader colInterfaceNetworkKey;
         private System.Windows.Forms.ColumnHeader colInterfaceNetworkValue;
+        private System.Windows.Forms.DataGridView tblNetworks;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNetworkName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNetworkAlgorithm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNetworkEncryption;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNetworkSignal;
     }
 }
 

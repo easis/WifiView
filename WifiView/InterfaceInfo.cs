@@ -43,7 +43,7 @@ namespace WifiView
             if (wlanIface.NetworkInterface.Speed > 0)
             {
                 networkItems.Add(
-                    Utils.MakeKeyValueItem("Speed", wlanIface.NetworkInterface.Speed.ToString(), groupNetwork)
+                    Utils.MakeKeyValueItem("Speed", $"{(wlanIface.NetworkInterface.Speed / 1000000)}  Mbps", groupNetwork)
                 );
             }
 

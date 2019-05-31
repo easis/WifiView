@@ -16,7 +16,8 @@ namespace WifiView
         private WlanClient wClient;
         public FrmMain()
         {
-            this.wClient = wClient = new WlanClient();
+            this.wClient = new WlanClient();
+
             InitializeComponent();            
         }
 
@@ -57,14 +58,14 @@ namespace WifiView
                     WlanClient.WlanInterface wlanIface = item.Tag as WlanClient.WlanInterface;
                     InterfaceInfo.AddDeviceInformation(lstInterfaceInformation, wlanIface);
                     Profile.AddProfiles(lstProfiles, wlanIface);
-
+                    Network.AddNetworks(tblNetworks, wlanIface);
                 }
             } else
             {
                 tabOptions.Enabled = false;
                 lstInterfaceInformation.Groups.Clear();
                 lstInterfaceInformation.Items.Clear();
-                
+                tblNetworks.Rows.Clear();
             }
         }
    

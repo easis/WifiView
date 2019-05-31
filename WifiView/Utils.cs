@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NativeWifi;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
@@ -14,6 +15,11 @@ namespace WifiView
             item.SubItems.Add(value);
 
             return item;
+        }
+
+        public static string GetStringForSSID(Wlan.Dot11Ssid ssid)
+        {
+            return Encoding.ASCII.GetString(ssid.SSID, 0, (int)ssid.SSIDLength);
         }
     }
 }

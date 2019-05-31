@@ -51,6 +51,7 @@
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Interop.cs" />
+    <Compile Include="Network.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
