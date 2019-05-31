@@ -43,10 +43,15 @@ namespace WifiView
 
         private void LstInterfaces_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            if(lstInterfaces.SelectedItems.Count > 0)
+            if (lstInterfaces.SelectedItems.Count > 0)
             {
+                if(!tabOptions.Enabled)
+                {
+                    tabOptions.Enabled = true;
+                }
+
                 ListViewItem item = lstInterfaces.SelectedItems[0];
-                if(item.Tag != null && item.Tag.GetType() == typeof(WlanClient.WlanInterface))
+                if (item.Tag != null && item.Tag.GetType() == typeof(WlanClient.WlanInterface))
                 {
                     AddDeviceInformation(item.Tag as WlanClient.WlanInterface);
                 }
@@ -83,7 +88,7 @@ namespace WifiView
             ListViewGroup groupNetwork = new ListViewGroup("Network");
             lstInterfaceInformation.Groups.Add(groupNetwork);
 
-            ListViewItem[] networkItems =
+            List<ListViewItem> networkItems = new List<ListViewItem>
             {
                 MakeKeyValueItem("Name", wlanIface.NetworkInterface.Name, groupNetwork),
                 MakeKeyValueItem("Description", wlanIface.NetworkInterface.Description, groupNetwork),
@@ -92,10 +97,16 @@ namespace WifiView
                 MakeKeyValueItem("Id", wlanIface.NetworkInterface.Id, groupNetwork),
                 MakeKeyValueItem("Type", wlanIface.NetworkInterface.NetworkInterfaceType.ToString(), groupNetwork),
                 MakeKeyValueItem("Supports multicast?", wlanIface.NetworkInterface.SupportsMulticast ? "YES" : "NO", groupNetwork),
-                MakeKeyValueItem("Speed", wlanIface.NetworkInterface.Speed.ToString(), groupNetwork),                
             };
 
-            lstInterfaceInformation.Items.AddRange(networkItems);
+            if (wlanIface.NetworkInterface.Speed > 0)
+            {
+                networkItems.Add(
+                    MakeKeyValueItem("Speed", wlanIface.NetworkInterface.Speed.ToString(), groupNetwork)
+                );
+            }
+
+            lstInterfaceInformation.Items.AddRange(networkItems.ToArray());
         }
 
         private void AddDeviceInformation(WlanClient.WlanInterface wlanIface)
@@ -104,12 +115,12 @@ namespace WifiView
             lstInterfaceInformation.Groups.Clear();
 
             AddDeviceNetworkInformation(wlanIface);
-            AddDeviceInterfaceInformation(wlanIface);                    
+            AddDeviceInterfaceInformation(wlanIface);
         }
 
         private void LstInterfaceInformation_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            if(e.IsSelected)
+            if (e.IsSelected)
             {
                 e.Item.Selected = false;
             }

@@ -30,25 +30,26 @@
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.grpInterfaceInformation = new System.Windows.Forms.GroupBox();
-            this.lstInterfaceInformation = new System.Windows.Forms.ListView();
-            this.grpInterfaces = new System.Windows.Forms.GroupBox();
-            this.lstInterfaces = new System.Windows.Forms.ListView();
-            this.colInterfacesName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabOptions = new System.Windows.Forms.TabControl();
             this.tabProfiles = new System.Windows.Forms.TabPage();
             this.tabNetworks = new System.Windows.Forms.TabPage();
             this.mnuInterfaces = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuInterfacesReload = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabStatistics = new System.Windows.Forms.TabPage();
+            this.tabInformation = new System.Windows.Forms.TabPage();
+            this.grpInterfaces = new System.Windows.Forms.GroupBox();
+            this.colInterfacesName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lstInterfaces = new System.Windows.Forms.ListView();
+            this.lstInterfaceInformation = new System.Windows.Forms.ListView();
             this.colInterfaceInformationKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colInterfaceInformationValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.grpInterfaceInformation.SuspendLayout();
-            this.grpInterfaces.SuspendLayout();
             this.tabOptions.SuspendLayout();
             this.mnuInterfaces.SuspendLayout();
+            this.tabInformation.SuspendLayout();
+            this.grpInterfaces.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -59,7 +60,6 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.grpInterfaceInformation);
             this.splitContainer1.Panel1.Controls.Add(this.grpInterfaces);
             // 
             // splitContainer1.Panel2
@@ -69,75 +69,14 @@
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 0;
             // 
-            // grpInterfaceInformation
-            // 
-            this.grpInterfaceInformation.Controls.Add(this.lstInterfaceInformation);
-            this.grpInterfaceInformation.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grpInterfaceInformation.Location = new System.Drawing.Point(0, 265);
-            this.grpInterfaceInformation.Name = "grpInterfaceInformation";
-            this.grpInterfaceInformation.Size = new System.Drawing.Size(266, 185);
-            this.grpInterfaceInformation.TabIndex = 1;
-            this.grpInterfaceInformation.TabStop = false;
-            this.grpInterfaceInformation.Text = "Information";
-            // 
-            // lstInterfaceInformation
-            // 
-            this.lstInterfaceInformation.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colInterfaceInformationKey,
-            this.colInterfaceInformationValue});
-            this.lstInterfaceInformation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstInterfaceInformation.FullRowSelect = true;
-            this.lstInterfaceInformation.GridLines = true;
-            this.lstInterfaceInformation.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lstInterfaceInformation.Location = new System.Drawing.Point(3, 16);
-            this.lstInterfaceInformation.MultiSelect = false;
-            this.lstInterfaceInformation.Name = "lstInterfaceInformation";
-            this.lstInterfaceInformation.Size = new System.Drawing.Size(260, 166);
-            this.lstInterfaceInformation.TabIndex = 0;
-            this.lstInterfaceInformation.UseCompatibleStateImageBehavior = false;
-            this.lstInterfaceInformation.View = System.Windows.Forms.View.Details;
-            this.lstInterfaceInformation.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.LstInterfaceInformation_ItemSelectionChanged);
-            // 
-            // grpInterfaces
-            // 
-            this.grpInterfaces.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpInterfaces.Controls.Add(this.lstInterfaces);
-            this.grpInterfaces.Location = new System.Drawing.Point(3, 3);
-            this.grpInterfaces.Name = "grpInterfaces";
-            this.grpInterfaces.Size = new System.Drawing.Size(260, 256);
-            this.grpInterfaces.TabIndex = 0;
-            this.grpInterfaces.TabStop = false;
-            this.grpInterfaces.Text = "Interfaces";
-            // 
-            // lstInterfaces
-            // 
-            this.lstInterfaces.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colInterfacesName});
-            this.lstInterfaces.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstInterfaces.FullRowSelect = true;
-            this.lstInterfaces.GridLines = true;
-            this.lstInterfaces.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lstInterfaces.Location = new System.Drawing.Point(3, 16);
-            this.lstInterfaces.MultiSelect = false;
-            this.lstInterfaces.Name = "lstInterfaces";
-            this.lstInterfaces.Size = new System.Drawing.Size(254, 237);
-            this.lstInterfaces.TabIndex = 0;
-            this.lstInterfaces.UseCompatibleStateImageBehavior = false;
-            this.lstInterfaces.View = System.Windows.Forms.View.Details;
-            this.lstInterfaces.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.LstInterfaces_ItemSelectionChanged);
-            // 
-            // colInterfacesName
-            // 
-            this.colInterfacesName.Text = "Name";
-            this.colInterfacesName.Width = 250;
-            // 
             // tabOptions
             // 
+            this.tabOptions.Controls.Add(this.tabInformation);
             this.tabOptions.Controls.Add(this.tabProfiles);
             this.tabOptions.Controls.Add(this.tabNetworks);
+            this.tabOptions.Controls.Add(this.tabStatistics);
             this.tabOptions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabOptions.Enabled = false;
             this.tabOptions.Location = new System.Drawing.Point(0, 0);
             this.tabOptions.Name = "tabOptions";
             this.tabOptions.SelectedIndex = 0;
@@ -178,6 +117,77 @@
             this.mnuInterfacesReload.Text = "Reload";
             this.mnuInterfacesReload.Click += new System.EventHandler(this.MnuInterfacesReload_Click);
             // 
+            // tabStatistics
+            // 
+            this.tabStatistics.Location = new System.Drawing.Point(4, 22);
+            this.tabStatistics.Name = "tabStatistics";
+            this.tabStatistics.Padding = new System.Windows.Forms.Padding(3);
+            this.tabStatistics.Size = new System.Drawing.Size(522, 424);
+            this.tabStatistics.TabIndex = 2;
+            this.tabStatistics.Text = "Statistics";
+            this.tabStatistics.UseVisualStyleBackColor = true;
+            // 
+            // tabInformation
+            // 
+            this.tabInformation.Controls.Add(this.lstInterfaceInformation);
+            this.tabInformation.Location = new System.Drawing.Point(4, 22);
+            this.tabInformation.Name = "tabInformation";
+            this.tabInformation.Padding = new System.Windows.Forms.Padding(3);
+            this.tabInformation.Size = new System.Drawing.Size(522, 424);
+            this.tabInformation.TabIndex = 3;
+            this.tabInformation.Text = "Information";
+            this.tabInformation.UseVisualStyleBackColor = true;
+            // 
+            // grpInterfaces
+            // 
+            this.grpInterfaces.Controls.Add(this.lstInterfaces);
+            this.grpInterfaces.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpInterfaces.Location = new System.Drawing.Point(0, 0);
+            this.grpInterfaces.Name = "grpInterfaces";
+            this.grpInterfaces.Size = new System.Drawing.Size(266, 450);
+            this.grpInterfaces.TabIndex = 0;
+            this.grpInterfaces.TabStop = false;
+            this.grpInterfaces.Text = "Interfaces";
+            // 
+            // colInterfacesName
+            // 
+            this.colInterfacesName.Text = "Name";
+            this.colInterfacesName.Width = 250;
+            // 
+            // lstInterfaces
+            // 
+            this.lstInterfaces.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colInterfacesName});
+            this.lstInterfaces.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstInterfaces.FullRowSelect = true;
+            this.lstInterfaces.GridLines = true;
+            this.lstInterfaces.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lstInterfaces.Location = new System.Drawing.Point(3, 16);
+            this.lstInterfaces.MultiSelect = false;
+            this.lstInterfaces.Name = "lstInterfaces";
+            this.lstInterfaces.Size = new System.Drawing.Size(260, 431);
+            this.lstInterfaces.TabIndex = 0;
+            this.lstInterfaces.UseCompatibleStateImageBehavior = false;
+            this.lstInterfaces.View = System.Windows.Forms.View.Details;
+            this.lstInterfaces.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.LstInterfaces_ItemSelectionChanged);
+            // 
+            // lstInterfaceInformation
+            // 
+            this.lstInterfaceInformation.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colInterfaceInformationKey,
+            this.colInterfaceInformationValue});
+            this.lstInterfaceInformation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstInterfaceInformation.FullRowSelect = true;
+            this.lstInterfaceInformation.GridLines = true;
+            this.lstInterfaceInformation.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lstInterfaceInformation.Location = new System.Drawing.Point(3, 3);
+            this.lstInterfaceInformation.MultiSelect = false;
+            this.lstInterfaceInformation.Name = "lstInterfaceInformation";
+            this.lstInterfaceInformation.Size = new System.Drawing.Size(516, 418);
+            this.lstInterfaceInformation.TabIndex = 2;
+            this.lstInterfaceInformation.UseCompatibleStateImageBehavior = false;
+            this.lstInterfaceInformation.View = System.Windows.Forms.View.Details;
+            // 
             // colInterfaceInformationKey
             // 
             this.colInterfaceInformationKey.Text = "Key";
@@ -204,10 +214,10 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
-            this.grpInterfaceInformation.ResumeLayout(false);
-            this.grpInterfaces.ResumeLayout(false);
             this.tabOptions.ResumeLayout(false);
             this.mnuInterfaces.ResumeLayout(false);
+            this.tabInformation.ResumeLayout(false);
+            this.grpInterfaces.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -218,13 +228,14 @@
         private System.Windows.Forms.TabControl tabOptions;
         private System.Windows.Forms.TabPage tabProfiles;
         private System.Windows.Forms.TabPage tabNetworks;
-        private System.Windows.Forms.GroupBox grpInterfaceInformation;
-        private System.Windows.Forms.GroupBox grpInterfaces;
-        private System.Windows.Forms.ListView lstInterfaceInformation;
         private System.Windows.Forms.ContextMenuStrip mnuInterfaces;
         private System.Windows.Forms.ToolStripMenuItem mnuInterfacesReload;
+        private System.Windows.Forms.TabPage tabStatistics;
+        private System.Windows.Forms.TabPage tabInformation;
+        private System.Windows.Forms.GroupBox grpInterfaces;
         private System.Windows.Forms.ListView lstInterfaces;
         private System.Windows.Forms.ColumnHeader colInterfacesName;
+        private System.Windows.Forms.ListView lstInterfaceInformation;
         private System.Windows.Forms.ColumnHeader colInterfaceInformationKey;
         private System.Windows.Forms.ColumnHeader colInterfaceInformationValue;
     }
