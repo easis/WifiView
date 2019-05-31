@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace WifiView
 {
@@ -52,9 +54,17 @@ namespace WifiView
                 ListViewItem item = lstInterfaces.SelectedItems[0];
                 if (item.Tag != null && item.Tag.GetType() == typeof(WlanClient.WlanInterface))
                 {
-                    AddDeviceInformation(item.Tag as WlanClient.WlanInterface);
+                    WlanClient.WlanInterface wlanIface = item.Tag as WlanClient.WlanInterface;
+                    AddDeviceInformation(wlanIface);
+                    AddProfiles(wlanIface);
 
                 }
+            } else
+            {
+                tabOptions.Enabled = false;
+                lstInterfaceInformation.Groups.Clear();
+                lstInterfaceInformation.Items.Clear();
+                
             }
         }
 
@@ -67,6 +77,7 @@ namespace WifiView
             return item;
         }
 
+        #region "Device information"
         private void AddDeviceInterfaceInformation(WlanClient.WlanInterface wlanIface)
         {
             ListViewGroup groupIface = new ListViewGroup("Interface");            
@@ -111,8 +122,8 @@ namespace WifiView
 
         private void AddDeviceInformation(WlanClient.WlanInterface wlanIface)
         {
-            lstInterfaceInformation.Items.Clear();
             lstInterfaceInformation.Groups.Clear();
+            lstInterfaceInformation.Items.Clear();            
 
             AddDeviceNetworkInformation(wlanIface);
             AddDeviceInterfaceInformation(wlanIface);
@@ -121,6 +132,63 @@ namespace WifiView
             lstInterfaceInformation.SetGroupState(ListViewGroupCollapse.ListViewGroupState.Collapsible);
 #endif
         }
+        #endregion
+
+        #region "Profiles"
+        private void AddProfilesInformation(WLANProfile wlanProfile)
+        {
+            ListViewGroup groupSsid = new ListViewGroup(wlanProfile.Name);
+            lstProfiles.Groups.Add(groupSsid);
+
+            string password = "";
+            try
+            {
+                password = wlanProfile.MSM.Security.SharedKey.KeyMaterial;
+            }
+            catch { }
+
+            List<ListViewItem> networkItems = new List<ListViewItem>
+            {
+                MakeKeyValueItem("Name", wlanProfile.Name, groupSsid),
+                MakeKeyValueItem("Authentication", wlanProfile.MSM.Security.AuthEncryption.Authentication, groupSsid),
+                MakeKeyValueItem("Encryption", wlanProfile.MSM.Security.AuthEncryption.Encryption, groupSsid),
+                MakeKeyValueItem("Password", password, groupSsid),
+            };
+
+            lstProfiles.Items.AddRange(networkItems.ToArray());
+        }
+
+        private void AddProfiles(WlanClient.WlanInterface wlanIface)
+        {
+            lstProfiles.Groups.Clear();
+            lstProfiles.Items.Clear();
+
+            foreach (Wlan.WlanProfileInfo profileInfo in wlanIface.GetProfiles())
+            {
+                if(string.IsNullOrEmpty(profileInfo.profileName)) {
+                    continue;
+                }
+
+                XmlSerializer deserializer = new XmlSerializer(typeof(WLANProfile));
+                object profile = null;
+                using (TextReader reader = new StringReader(wlanIface.GetProfileXmlUnencrypted(profileInfo.profileName)))
+                {
+                    profile = deserializer.Deserialize(reader);
+                }
+
+                if(profile == null)
+                {
+                    continue;
+                }                
+
+                AddProfilesInformation(profile as WLANProfile);
+            }
+
+#if !DEBUG
+            lstProfiles.SetGroupState(ListViewGroupCollapse.ListViewGroupState.Collapsible);
+#endif
+        }
+        #endregion
 
         private void LstInterfaceInformation_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {

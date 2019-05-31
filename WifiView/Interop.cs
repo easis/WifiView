@@ -332,8 +332,9 @@ namespace NativeWifi
 			/// </remarks>
 			AllUser = 0,
 			GroupPolicy = 1,
-			User = 2
-		}
+			User = 2,
+            GetPlaintextKey = 4
+        }
 
 		[DllImport("wlanapi.dll")]
 		public static extern int WlanSetProfile(
