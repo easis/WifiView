@@ -55,6 +55,7 @@
     <Compile Include="Profile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statistics.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="WlanApi.cs" />
     <Compile Include="XmlWifiProfile.cs" />

@@ -31,28 +31,32 @@ namespace WifiView
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.mnuInterfaces = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuInterfacesReload = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.grpInterfaces = new System.Windows.Forms.GroupBox();
             this.lstInterfaces = new System.Windows.Forms.ListView();
             this.colInterfacesName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabOptions = new System.Windows.Forms.TabControl();
             this.tabInformation = new System.Windows.Forms.TabPage();
-            this.tabProfiles = new System.Windows.Forms.TabPage();
-            this.lstProfiles = new System.Windows.Forms.ListView();
-            this.tabNetworks = new System.Windows.Forms.TabPage();
-            this.tabStatistics = new System.Windows.Forms.TabPage();
-            this.mnuInterfaces = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuInterfacesReload = new System.Windows.Forms.ToolStripMenuItem();
-            this.colInterfaceNetworkKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colInterfaceNetworkValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tblNetworks = new System.Windows.Forms.DataGridView();
             this.lstInterfaceInformation = new ListViewGroupCollapse.ListViewExtended();
             this.colInterfaceInformationKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colInterfaceInformationValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabProfiles = new System.Windows.Forms.TabPage();
+            this.lstProfiles = new ListViewGroupCollapse.ListViewExtended();
+            this.colInterfaceNetworkKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colInterfaceNetworkValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabNetworks = new System.Windows.Forms.TabPage();
+            this.tblNetworks = new System.Windows.Forms.DataGridView();
             this.colNetworkName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNetworkAlgorithm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNetworkEncryption = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNetworkSignal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabStatistics = new System.Windows.Forms.TabPage();
+            this.lstStatistics = new ListViewGroupCollapse.ListViewExtended();
+            this.colStatisticsKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colStatisticsValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.mnuInterfaces.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -61,9 +65,23 @@ namespace WifiView
             this.tabInformation.SuspendLayout();
             this.tabProfiles.SuspendLayout();
             this.tabNetworks.SuspendLayout();
-            this.mnuInterfaces.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tblNetworks)).BeginInit();
+            this.tabStatistics.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // mnuInterfaces
+            // 
+            this.mnuInterfaces.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuInterfacesReload});
+            this.mnuInterfaces.Name = "mnuInterfaces";
+            this.mnuInterfaces.Size = new System.Drawing.Size(111, 26);
+            // 
+            // mnuInterfacesReload
+            // 
+            this.mnuInterfacesReload.Name = "mnuInterfacesReload";
+            this.mnuInterfacesReload.Size = new System.Drawing.Size(110, 22);
+            this.mnuInterfacesReload.Text = "Reload";
+            this.mnuInterfacesReload.Click += new System.EventHandler(this.MnuInterfacesReload_Click);
             // 
             // splitContainer1
             // 
@@ -141,6 +159,33 @@ namespace WifiView
             this.tabInformation.Text = "Information";
             this.tabInformation.UseVisualStyleBackColor = true;
             // 
+            // lstInterfaceInformation
+            // 
+            this.lstInterfaceInformation.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colInterfaceInformationKey,
+            this.colInterfaceInformationValue});
+            this.lstInterfaceInformation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstInterfaceInformation.FullRowSelect = true;
+            this.lstInterfaceInformation.GridLines = true;
+            this.lstInterfaceInformation.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lstInterfaceInformation.Location = new System.Drawing.Point(3, 3);
+            this.lstInterfaceInformation.MultiSelect = false;
+            this.lstInterfaceInformation.Name = "lstInterfaceInformation";
+            this.lstInterfaceInformation.Size = new System.Drawing.Size(516, 418);
+            this.lstInterfaceInformation.TabIndex = 2;
+            this.lstInterfaceInformation.UseCompatibleStateImageBehavior = false;
+            this.lstInterfaceInformation.View = System.Windows.Forms.View.Details;
+            // 
+            // colInterfaceInformationKey
+            // 
+            this.colInterfaceInformationKey.Text = "Key";
+            this.colInterfaceInformationKey.Width = 120;
+            // 
+            // colInterfaceInformationValue
+            // 
+            this.colInterfaceInformationValue.Text = "Value";
+            this.colInterfaceInformationValue.Width = 392;
+            // 
             // tabProfiles
             // 
             this.tabProfiles.Controls.Add(this.lstProfiles);
@@ -168,6 +213,16 @@ namespace WifiView
             this.lstProfiles.UseCompatibleStateImageBehavior = false;
             this.lstProfiles.View = System.Windows.Forms.View.Details;
             // 
+            // colInterfaceNetworkKey
+            // 
+            this.colInterfaceNetworkKey.Text = "Key";
+            this.colInterfaceNetworkKey.Width = 120;
+            // 
+            // colInterfaceNetworkValue
+            // 
+            this.colInterfaceNetworkValue.Text = "Value";
+            this.colInterfaceNetworkValue.Width = 392;
+            // 
             // tabNetworks
             // 
             this.tabNetworks.Controls.Add(this.tblNetworks);
@@ -178,40 +233,6 @@ namespace WifiView
             this.tabNetworks.TabIndex = 1;
             this.tabNetworks.Text = "Networks";
             this.tabNetworks.UseVisualStyleBackColor = true;
-            // 
-            // tabStatistics
-            // 
-            this.tabStatistics.Location = new System.Drawing.Point(4, 22);
-            this.tabStatistics.Name = "tabStatistics";
-            this.tabStatistics.Padding = new System.Windows.Forms.Padding(3);
-            this.tabStatistics.Size = new System.Drawing.Size(522, 424);
-            this.tabStatistics.TabIndex = 2;
-            this.tabStatistics.Text = "Statistics";
-            this.tabStatistics.UseVisualStyleBackColor = true;
-            // 
-            // mnuInterfaces
-            // 
-            this.mnuInterfaces.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuInterfacesReload});
-            this.mnuInterfaces.Name = "mnuInterfaces";
-            this.mnuInterfaces.Size = new System.Drawing.Size(111, 26);
-            // 
-            // mnuInterfacesReload
-            // 
-            this.mnuInterfacesReload.Name = "mnuInterfacesReload";
-            this.mnuInterfacesReload.Size = new System.Drawing.Size(110, 22);
-            this.mnuInterfacesReload.Text = "Reload";
-            this.mnuInterfacesReload.Click += new System.EventHandler(this.MnuInterfacesReload_Click);
-            // 
-            // colInterfaceNetworkKey
-            // 
-            this.colInterfaceNetworkKey.Text = "Key";
-            this.colInterfaceNetworkKey.Width = 120;
-            // 
-            // colInterfaceNetworkValue
-            // 
-            this.colInterfaceNetworkValue.Text = "Value";
-            this.colInterfaceNetworkValue.Width = 392;
             // 
             // tblNetworks
             // 
@@ -234,33 +255,6 @@ namespace WifiView
             this.tblNetworks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tblNetworks.Size = new System.Drawing.Size(516, 418);
             this.tblNetworks.TabIndex = 0;
-            // 
-            // lstInterfaceInformation
-            // 
-            this.lstInterfaceInformation.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colInterfaceInformationKey,
-            this.colInterfaceInformationValue});
-            this.lstInterfaceInformation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstInterfaceInformation.FullRowSelect = true;
-            this.lstInterfaceInformation.GridLines = true;
-            this.lstInterfaceInformation.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lstInterfaceInformation.Location = new System.Drawing.Point(3, 3);
-            this.lstInterfaceInformation.MultiSelect = false;
-            this.lstInterfaceInformation.Name = "lstInterfaceInformation";
-            this.lstInterfaceInformation.Size = new System.Drawing.Size(516, 418);
-            this.lstInterfaceInformation.TabIndex = 2;
-            this.lstInterfaceInformation.UseCompatibleStateImageBehavior = false;
-            this.lstInterfaceInformation.View = System.Windows.Forms.View.Details;
-            // 
-            // colInterfaceInformationKey
-            // 
-            this.colInterfaceInformationKey.Text = "Key";
-            this.colInterfaceInformationKey.Width = 120;
-            // 
-            // colInterfaceInformationValue
-            // 
-            this.colInterfaceInformationValue.Text = "Value";
-            this.colInterfaceInformationValue.Width = 392;
             // 
             // colNetworkName
             // 
@@ -290,6 +284,44 @@ namespace WifiView
             this.colNetworkSignal.Name = "colNetworkSignal";
             this.colNetworkSignal.ReadOnly = true;
             // 
+            // tabStatistics
+            // 
+            this.tabStatistics.Controls.Add(this.lstStatistics);
+            this.tabStatistics.Location = new System.Drawing.Point(4, 22);
+            this.tabStatistics.Name = "tabStatistics";
+            this.tabStatistics.Padding = new System.Windows.Forms.Padding(3);
+            this.tabStatistics.Size = new System.Drawing.Size(522, 424);
+            this.tabStatistics.TabIndex = 2;
+            this.tabStatistics.Text = "Statistics";
+            this.tabStatistics.UseVisualStyleBackColor = true;
+            // 
+            // lstStatistics
+            // 
+            this.lstStatistics.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colStatisticsKey,
+            this.colStatisticsValue});
+            this.lstStatistics.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstStatistics.FullRowSelect = true;
+            this.lstStatistics.GridLines = true;
+            this.lstStatistics.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lstStatistics.Location = new System.Drawing.Point(3, 3);
+            this.lstStatistics.MultiSelect = false;
+            this.lstStatistics.Name = "lstStatistics";
+            this.lstStatistics.Size = new System.Drawing.Size(516, 418);
+            this.lstStatistics.TabIndex = 0;
+            this.lstStatistics.UseCompatibleStateImageBehavior = false;
+            this.lstStatistics.View = System.Windows.Forms.View.Details;
+            // 
+            // colStatisticsKey
+            // 
+            this.colStatisticsKey.Text = "Key";
+            this.colStatisticsKey.Width = 175;
+            // 
+            // colStatisticsValue
+            // 
+            this.colStatisticsValue.Text = "Value";
+            this.colStatisticsValue.Width = 337;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -303,6 +335,7 @@ namespace WifiView
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WifiView";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.mnuInterfaces.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
@@ -311,8 +344,8 @@ namespace WifiView
             this.tabInformation.ResumeLayout(false);
             this.tabProfiles.ResumeLayout(false);
             this.tabNetworks.ResumeLayout(false);
-            this.mnuInterfaces.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tblNetworks)).EndInit();
+            this.tabStatistics.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -333,7 +366,7 @@ namespace WifiView
         private ListViewExtended lstInterfaceInformation;
         private System.Windows.Forms.ColumnHeader colInterfaceInformationKey;
         private System.Windows.Forms.ColumnHeader colInterfaceInformationValue;
-        private System.Windows.Forms.ListView lstProfiles;
+        private ListViewExtended lstProfiles;
         private System.Windows.Forms.ColumnHeader colInterfaceNetworkKey;
         private System.Windows.Forms.ColumnHeader colInterfaceNetworkValue;
         private System.Windows.Forms.DataGridView tblNetworks;
@@ -341,6 +374,9 @@ namespace WifiView
         private System.Windows.Forms.DataGridViewTextBoxColumn colNetworkAlgorithm;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNetworkEncryption;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNetworkSignal;
+        private ListViewExtended lstStatistics;
+        private System.Windows.Forms.ColumnHeader colStatisticsKey;
+        private System.Windows.Forms.ColumnHeader colStatisticsValue;
     }
 }
 

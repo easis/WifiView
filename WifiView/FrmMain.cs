@@ -17,7 +17,6 @@ namespace WifiView
         public FrmMain()
         {
             this.wClient = new WlanClient();
-
             InitializeComponent();            
         }
 
@@ -59,6 +58,14 @@ namespace WifiView
                     InterfaceInfo.AddDeviceInformation(lstInterfaceInformation, wlanIface);
                     Profile.AddProfiles(lstProfiles, wlanIface);
                     Network.AddNetworks(tblNetworks, wlanIface);
+                    Statistics.AddStatisticsInformation(lstStatistics, wlanIface);
+
+#if !DEBUG
+                    lstInterfaceInformation.SetGroupState(ListViewGroupCollapse.ListViewGroupState.Collapsible);
+                    lstProfiles.SetGroupState(ListViewGroupCollapse.ListViewGroupState.Collapsible);
+                    lstInterfaceInformation.SetGroupState(ListViewGroupCollapse.ListViewGroupState.Collapsible);
+                    lstStatistics.SetGroupState(ListViewGroupCollapse.ListViewGroupState.Collapsible);
+#endif
                 }
             } else
             {

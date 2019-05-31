@@ -59,10 +59,6 @@ namespace WifiView
 
                 AddProfilesInformation(lst, (WLANProfile) profile);
             }
-
-#if !DEBUG
-            lstProfiles.SetGroupState(ListViewGroupCollapse.ListViewGroupState.Collapsible);
-#endif
         }
     }
 }

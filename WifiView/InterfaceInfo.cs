@@ -57,10 +57,6 @@ namespace WifiView
 
             AddDeviceNetworkInformation(lst, wlanIface);
             AddDeviceInterfaceInformation(lst, wlanIface);
-
-#if !DEBUG
-            lstInterfaceInformation.SetGroupState(ListViewGroupCollapse.ListViewGroupState.Collapsible);
-#endif
         }
     }
 }
